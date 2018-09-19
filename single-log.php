@@ -11,6 +11,9 @@ get_header(); ?>
 
 	<section id="primary" class="container-fluid">
 		<main id="main" class="site-main" role="main">
+        <table>
+
+        
 
 		<?php
 		while ( have_posts() ) : the_post();
@@ -26,7 +29,7 @@ get_header(); ?>
 
 		endwhile; // End of the loop.
 		?>
-
+            </table>
 		</main><!-- #main -->
 	</section><!-- #primary -->
 
