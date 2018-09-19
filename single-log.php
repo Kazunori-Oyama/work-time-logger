@@ -12,6 +12,7 @@ get_header(); ?>
 	<section id="primary" class="container-fluid">
 		<main id="main" class="site-main" role="main">
         <table>
+        <tr><th>開始時刻</th><th>終了時刻</th><th>作業時間</th><th>作業者</th><th>案件</th><th>作業分類</th><th>作業内容</th><th>Todays Task</th><th>進捗コメント</th><th>達成率</th></tr>
 
         
 

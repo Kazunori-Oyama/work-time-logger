@@ -17,7 +17,7 @@
 		else :
 			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 		endif;?>
-		<tr><th>開始時刻</th><th>終了時刻</th><th>作業時間</th><th>作業者</th><th>案件</th><th>作業分類</th><th>作業内容</th><th>Todays Task</th><th>進捗コメント</th><th>達成率</th></tr>
+		
 		<tr><td><?php the_field('startTime');?></td><td><?php the_field('endTime');?></td></tr>
 		
 		<?php if ( 'post' === get_post_type() ) : ?>
