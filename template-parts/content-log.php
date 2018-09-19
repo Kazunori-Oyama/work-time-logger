@@ -18,7 +18,18 @@
 			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 		endif;?>
 		
-		<tr><td><?php the_field('startTime');?></td><td><?php the_field('endTime');?></td></tr>
+		<tr>
+		<td><?php the_field('startTime');?></td>
+		<td><?php the_field('endTime');?></td>
+		<td>あとでJS書いて計算</td>
+		<td><?php the_author();?></td>
+		<td><?php the_tags(); ?></td>
+		<td>親カテゴリ？</td>
+		<td><?php the_category(' '); ?></td>
+		<td><?php the_field('todaysTask');?></td>
+		<td><?php the_field('comment');?></td>
+		<td><?php the_field('progress');?>%</td>
+		</tr>
 		
 		<?php if ( 'post' === get_post_type() ) : ?>
 		<div class="entry-meta">
