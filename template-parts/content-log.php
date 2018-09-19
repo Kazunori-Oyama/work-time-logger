@@ -11,12 +11,6 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	
-		<?php
-		if ( is_single() ) :
-			the_title( '<h1 class="entry-title">', '</h1>' );
-		else :
-			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-		endif;?>
 		
 		<tr>
 		<td><?php the_field('startTime');?></td>
@@ -29,6 +23,7 @@
 		<td><?php the_field('todaysTask');?></td>
 		<td><?php the_field('comment');?></td>
 		<td><?php the_field('progress');?>%</td>
+		<td><?php wp_bootstrap_starter_entry_footer(); ?></td>
 		</tr>
 		
 		<?php if ( 'post' === get_post_type() ) : ?>
@@ -36,7 +31,6 @@
 			<?php wp_bootstrap_starter_posted_on(); ?>
 		</div><!-- .entry-meta -->
 	<?php endif;?>
-	<tr>
 		<?php
         if ( is_single() ) :
 			the_content();
@@ -49,9 +43,8 @@
 				'after'  => '</div>',
 			) );
 		?>
-	</tr><!-- .entry-content -->
 
 	
-		<?php wp_bootstrap_starter_entry_footer(); ?>
+		
 	
 </article><!-- #post-## -->
