@@ -31,7 +31,6 @@
 <?php wp_footer(); ?>
 <script>
 
-		function(){
 			var array = [];
 			var sum = 0;
 			var workTimes = jQuery('.workTime');
@@ -39,11 +38,13 @@
 				workTimes[i] = workTimes[i].innerHTML;
 				workTimes[i] = Number(workTimes[i]);
 				sum = sum+workTimes[i];
-				console.log(sum);
-			}
+			};
+			console.log(sum);
+			// sum = toString(sum);
+			document.getElementById('totalTime').innerHTML = sum+"min";
+
 			
-		}
-	);
+
 
 </script>
 </body>

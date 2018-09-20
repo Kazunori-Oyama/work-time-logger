@@ -37,7 +37,7 @@ get_header(); ?>
 			get_template_part( 'template-parts/content', 'none' );
 
 		endif; ?>
-		<tr><td></td><td></td><td>合計(JSで）</td><td></td><td></td><td></td><td></td><td></td><td></td><td>合計(JSで）</td></tr>
+		<tr><td></td><td></td><td id="totalTime"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 			</table>
 		</main><!-- #main -->
 	</section><!-- #primary -->
