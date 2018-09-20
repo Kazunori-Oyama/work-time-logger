@@ -16,14 +16,13 @@
 		<td class="startTime"><?php the_field('startTime');?></td>
 		<td class="endTime"><?php the_field('endTime');?></td>
 		<td class="workTime"><?php the_field('worktime');?></td>
-		<td><?php the_author();?></td>
-		<td><?php the_tags(); ?></td>
-		<td>親カテゴリ？</td>
-		<td><?php the_category(' '); ?></td>
-		<td><?php the_field('todaysTask');?></td>
-		<td><?php the_field('comment');?></td>
-		<td><?php the_field('progress');?>%</td>
-		<td><?php wp_bootstrap_starter_entry_footer(); ?></td>
+		<td class="in-charge"><?php the_author();?></td>
+		<td class="project"><?php the_tags(); ?></td>
+		<td class="step"><?php echo get_the_term_list($post->ID,'step');?></td>
+		<td class=""><?php the_field('todaysTask');?></td>
+		<td class=""><?php the_field('comment');?></td>
+		<td class=""><?php the_field('progress');?>%</td>
+		<td class=""><?php wp_bootstrap_starter_entry_footer(); ?></td>
 		</tr>
 		
 		<?php if ( 'post' === get_post_type() ) : ?>

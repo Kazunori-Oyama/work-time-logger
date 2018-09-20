@@ -285,5 +285,21 @@ function logPost (){
         'show_admin_column'=>true,
         'show_in_nav_menus' =>true,
     ));
+
+    register_taxonomy('step','log',
+    
+    array(
+        'public'=> true,
+        'hierarchical' => true,
+        'labels' => array(
+            'name' => '工程',
+            'singular_name' => '工程', 
+        ),
+        'show_ui' => true,
+        'show_admin_column'=>true,
+        'show_in_nav_menus' =>true,
+    )
+        );
 };
 add_action('init','logPost');
+
