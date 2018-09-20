@@ -29,6 +29,22 @@
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
+<script>
 
+		function(){
+			var array = [];
+			var sum = 0;
+			var workTimes = jQuery('.workTime');
+			for (i=0; i<workTimes.length; i++){
+				workTimes[i] = workTimes[i].innerHTML;
+				workTimes[i] = Number(workTimes[i]);
+				sum = sum+workTimes[i];
+				console.log(sum);
+			}
+			
+		}
+	);
+
+</script>
 </body>
 </html>

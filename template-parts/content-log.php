@@ -13,9 +13,9 @@
 	
 		
 		<tr>
-		<td><?php the_field('startTime');?></td>
-		<td><?php the_field('endTime');?></td>
-		<td>あとでJS書いて計算</td>
+		<td class="startTime"><?php the_field('startTime');?></td>
+		<td class="endTime"><?php the_field('endTime');?></td>
+		<td class="workTime"><?php the_field('worktime');?></td>
 		<td><?php the_author();?></td>
 		<td><?php the_tags(); ?></td>
 		<td>親カテゴリ？</td>
