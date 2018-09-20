@@ -13,6 +13,7 @@
 	
 		
 		<tr>
+		<td class="date"><?php the_time('Y年n月j日'); ?></td>
 		<td class="startTime"><?php the_field('startTime');?></td>
 		<td class="endTime"><?php the_field('endTime');?></td>
 		<td class="workTime"><?php the_field('worktime');?></td>
