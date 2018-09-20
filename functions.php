@@ -300,6 +300,21 @@ function logPost (){
         'show_in_nav_menus' =>true,
     )
         );
+
+        register_taxonomy('project','log',
+    
+        array(
+            'public'=> true,
+            'hierarchical' => true,
+            'labels' => array(
+                'name' => '案件',
+                'singular_name' => '案件', 
+            ),
+            'show_ui' => true,
+            'show_admin_column'=>true,
+            'show_in_nav_menus' =>true,
+        )
+            );
 };
 add_action('init','logPost');
 
