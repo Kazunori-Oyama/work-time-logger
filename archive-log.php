@@ -37,7 +37,8 @@ get_header(); ?>
 			get_template_part( 'template-parts/content', 'none' );
 
 		endif; ?>
-		<tr><td colspan="2">作業時間合計</td><td id="totalTime"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+		<tr><td colspan="3" class="font-weight-bold">作業時間合計</td><td id="totalTime"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+		<tr><td colspan="3" class="font-weight-bold">総コスト</td><td id="totalAmount"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 			</table>
 		</main><!-- #main -->
 	</section><!-- #primary -->

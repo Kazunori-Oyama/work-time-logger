@@ -42,6 +42,10 @@
 			console.log(sum);
 			// sum = toString(sum);
 			document.getElementById('totalTime').innerHTML = sum+"min";
+			
+			var totalAmount = sum*80;
+
+			document.getElementById('totalAmount').innerHTML = totalAmount.toLocaleString()+"円";
 
 			
 

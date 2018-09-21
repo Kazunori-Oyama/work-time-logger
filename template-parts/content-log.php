@@ -16,7 +16,7 @@
 		<td class="date"><?php the_time('Y年n月j日'); ?></td>
 		<td class="startTime"><?php the_field('startTime');?></td>
 		<td class="endTime"><?php the_field('endTime');?></td>
-		<td class="workTime"><?php the_field('worktime');?></td>
+		<td><span class="workTime"><?php the_field('worktime');?></span>min</td>
 		<td class="in-charge"><?php the_author();?></td>
 		<td class="project"><?php echo get_the_term_list($post->ID,'project');?></td>
 		<td class="step"><?php echo get_the_term_list($post->ID,'step');?></td>
