@@ -11,6 +11,28 @@ get_header(); ?>
 
 	<section id="primary" class="container-fluid">
 		<main id="main" class="site-main" role="main">
+		<table>
+		
+		<form action="">
+		<tr>
+		 	<td>
+			 <label for="submit"> 絞り込み:</label>
+			 <input type="submit">
+			</td>
+		 	<td>
+			 <label for="project">案件:</label>
+			 	<select id="project" name="project">
+				 	<option value="option">オプション１</option>
+				</select>
+			</td>
+		 	<td>工程</td>
+		 	<td>担当</td>
+			<td>実行</td>
+		 </tr>
+		
+		</form>
+		 
+		</table>
 			<table class="table table-striped">
 			<tr><th>作業日</th><th>開始時刻</th><th>終了時刻</th><th>作業時間</th><th>作業者</th><th>案件</th><th>作業分類</th><th>Todays Task</th><th>進捗コメント</th><th>達成率</th><th></th></tr>
 		<?php

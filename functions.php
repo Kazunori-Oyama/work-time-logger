@@ -323,9 +323,46 @@ function logPost (){
 };
 add_action('init','logPost');
 
+//Create daily report
+
+function daily_report(){
+    register_post_type('daily_report',
+    array(
+        'labels'=>array(
+            'name'=>__('Daily Reports'),
+            'singular_name'=>__('Daily Reports')
+        ),
+        'public'=>true,
+        'has_archive'=>true,
+        'show_ui' => true,
+        'show_admin_column'=>true,
+        'show_in_nav_menus' =>true,
+        'query_var' => true,
+        'supports' => array(
+            'title',
+            'author',
+            'tabs'
+        ),
+    )
+    );
+}
+add_action('init','daily_report');
+
+
 function author_article( $query ) {
     if ( is_author() ) {
     $query->set( 'post_type', 'log' );
     }
     }
     add_action( 'pre_get_posts', 'author_article');
+
+
+
+//不要なメニューの削除
+add_action('admin_menu','customprefix_remove_default_post_type_menu_item');
+function customprefix_remove_default_post_type_menu_item() {
+	remove_menu_page('edit.php');
+	remove_menu_page('edit.php?post_type=page');
+	remove_menu_page('upload.php');
+	remove_menu_page('edit-comments.php');
+}
