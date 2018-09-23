@@ -15,6 +15,7 @@ get_header(); ?>
 					the_field( 'estimate' );
 				?>
 		<main id="main" class="site-main" role="main">
+        
 			<table class="table table-striped">
 			<tr><th>作業日</th><th>開始時刻</th><th>終了時刻</th><th>作業時間</th><th>作業者</th><th>案件</th><th>作業分類</th><th>Todays Task</th><th>進捗コメント</th><th>達成率</th><th></th></tr>
 		<?php
@@ -23,7 +24,7 @@ get_header(); ?>
 
 			<?php
 			/* Start the Loop */
-			while ( have_posts() ) : the_post();
+			while (have_posts() ) : the_post();
 
 				/*
 				 * Include the Post-Format-specific template for the content.
@@ -35,7 +36,6 @@ get_header(); ?>
 			endwhile;
 
 			the_posts_navigation();
-
 		else :
 
 			get_template_part( 'template-parts/content', 'none' );

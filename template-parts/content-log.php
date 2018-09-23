@@ -8,7 +8,7 @@
  */
 
 ?>
-
+<?php $author_name = get_the_author();?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	
 		
@@ -17,7 +17,7 @@
 		<td class="startTime"><?php the_field('startTime');?></td>
 		<td class="endTime"><?php the_field('endTime');?></td>
 		<td><span class="workTime"><?php the_field('worktime');?></span>min</td>
-		<td class="in-charge"><?php the_author();?></td>
+		<td class="in-charge"><a href="<?php echo home_url();?>/?post_type=logs&author=<?php echo the_author_meta('ID');?>"><?php echo $author_name;?></a></td>
 		<td class="project"><?php echo get_the_term_list($post->ID,'project');?></td>
 		<td class="step"><?php echo get_the_term_list($post->ID,'step');?></td>
 		<td class=""><?php the_field('todaysTask');?></td>

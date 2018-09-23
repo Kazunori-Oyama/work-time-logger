@@ -284,6 +284,7 @@ function logPost (){
         'show_ui' => true,
         'show_admin_column'=>true,
         'show_in_nav_menus' =>true,
+        'query_var' => true,
         'supports' => array(
             'author',
             'tabs'
@@ -322,3 +323,9 @@ function logPost (){
 };
 add_action('init','logPost');
 
+function author_article( $query ) {
+    if ( is_author() ) {
+    $query->set( 'post_type', 'log' );
+    }
+    }
+    add_action( 'pre_get_posts', 'author_article');
