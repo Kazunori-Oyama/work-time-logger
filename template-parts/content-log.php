@@ -10,7 +10,7 @@
 ?>
 <?php $author_name = get_the_author();?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	
+
 		
 		<tr>
 		<td class="date"><?php the_time('Y年n月j日'); ?></td>

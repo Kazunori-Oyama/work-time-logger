@@ -325,28 +325,43 @@ add_action('init','logPost');
 
 //Create daily report
 
-function daily_report(){
-    register_post_type('daily_report',
-    array(
-        'labels'=>array(
-            'name'=>__('Daily Reports'),
-            'singular_name'=>__('Daily Reports')
-        ),
-        'public'=>true,
-        'has_archive'=>true,
-        'show_ui' => true,
-        'show_admin_column'=>true,
-        'show_in_nav_menus' =>true,
-        'query_var' => true,
-        'supports' => array(
-            'title',
-            'author',
-            'tabs'
-        ),
-    )
-    );
-}
-add_action('init','daily_report');
+// function daily_report(){
+//     register_post_type('daily_report',
+//     array(
+//         'labels'=>array(
+//             'name'=>__('Daily Reports'),
+//             'singular_name'=>__('Daily Reports')
+//         ),
+//         'public'=>true,
+//         'has_archive'=>true,
+//         'show_ui' => true,
+//         'show_admin_column'=>true,
+//         'show_in_nav_menus' =>true,
+//         'query_var' => true,
+//         'supports' => array(
+//             'title',
+//             'author',
+//             'tabs'
+//         ),
+//     )
+//     );
+
+//     register_taxonomy('members','daily_report',
+    
+//         array(
+//             'public'=> true,
+//             'hierarchical' => true,
+//             'labels' => array(
+//                 'name' => 'メンバー',
+//                 'singular_name' => 'メンバー', 
+//             ),
+//             'show_ui' => true,
+//             'show_admin_column'=>true,
+//             'show_in_nav_menus' =>true,
+//         )
+//             );
+// }
+// add_action('init','daily_report');
 
 
 function author_article( $query ) {
@@ -361,8 +376,33 @@ function author_article( $query ) {
 //不要なメニューの削除
 add_action('admin_menu','customprefix_remove_default_post_type_menu_item');
 function customprefix_remove_default_post_type_menu_item() {
-	remove_menu_page('edit.php');
 	remove_menu_page('edit.php?post_type=page');
 	remove_menu_page('upload.php');
 	remove_menu_page('edit-comments.php');
 }
+
+function customize_post_admin_menu_labels() {
+    global $menu;
+    global $submenu;
+    $menu[5][0] = 'Daliy Report';
+    $submenu['edit.php'][5][0] = 'Daliy Report';
+    $submenu['edit.php'][10][0] = 'Add Daliy Report';
+    echo '';
+    }
+    add_action( 'admin_menu', 'customize_post_admin_menu_labels' );
+
+function customize_admin_labels() {
+    global $wp_post_types;
+    $labels = &$wp_post_types['post']->labels;
+    $labels->name = 'Daliy Report';
+    $labels->singular_name = 'Daliy Report';
+    $labels->add_new = 'Add Daliy Report';
+    $labels->add_new_item = 'Add Daliy Report';
+    $labels->edit_item = 'Edit Daliy Report';
+    $labels->new_item = 'add Daily Report';
+    $labels->view_item = 'Show Daily Report';
+    $labels->search_items = 'Find Daily Report';
+    $labels->not_found = 'Not found';
+    $labels->not_found_in_trash = 'No Articles found in Trash';
+    }
+    add_action( 'init', 'customize_admin_labels' );
