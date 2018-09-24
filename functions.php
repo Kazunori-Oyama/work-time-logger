@@ -406,3 +406,5 @@ function customize_admin_labels() {
     $labels->not_found_in_trash = 'No Articles found in Trash';
     }
     add_action( 'init', 'customize_admin_labels' );
+
+    

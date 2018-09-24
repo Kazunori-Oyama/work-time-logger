@@ -10,10 +10,20 @@
 ?>
 <?php $author_name = get_the_author();?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-
+<?php
+$curURL = (empty($_SERVER["HTTPS"]) ? "http://" : "https://") . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
+					$postURL = $curURL;
+					$postURL = str_replace('post_type=log','post_type=post',$postURL);
+?>
 		
 		<tr>
-		<td class="date"><?php the_time('Y年n月j日'); ?></td>
+		<td class="date">
+		<?php $date = get_the_date('Ymj')?>
+			
+			<?php echo '<p><a href="'.get_home_url().'/post_type=post&m='.$date.'" style="display:inline; text-align:right;">';?>
+			<?php the_time('Y年n月j日'); ?>
+			<?php echo '</a>';?>
+		</td>
 		<td class="startTime"><?php the_field('startTime');?></td>
 		<td class="endTime"><?php the_field('endTime');?></td>
 		<td><span class="workTime"><?php the_field('worktime');?></span>min</td>
