@@ -8,7 +8,7 @@
  */
 
 get_header(); ?>
-
+<?php get_template_part( 'template-parts/searchfunction');?>
 	<section id="primary" class="col-sm-12 col-lg-8">
 	<?php
 

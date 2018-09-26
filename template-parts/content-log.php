@@ -10,19 +10,14 @@
 ?>
 <?php $author_name = get_the_author();?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-<?php
-$curURL = (empty($_SERVER["HTTPS"]) ? "http://" : "https://") . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
-					$postURL = $curURL;
-					$postURL = str_replace('post_type=log','post_type=post',$postURL);
-?>
 		
 		<tr>
 		<td class="date">
 		<?php $date = get_the_date('Ymj')?>
+		<?php the_time('Y/n/j'); ?>
+			<?php echo '<p><a href="'.get_home_url().'/?post_type=post&m='.$date.'" style="display:inline; text-align:right;">';?>
 			
-			<?php echo '<p><a href="'.get_home_url().'/post_type=post&m='.$date.'" style="display:inline; text-align:right;">';?>
-			<?php the_time('Y年n月j日'); ?>
-			<?php echo '</a>';?>
+			<?php echo '<i class="far fa-file-alt" title="この日のレポートを見る"></i></a>';?>
 		</td>
 		<td class="startTime"><?php the_field('startTime');?></td>
 		<td class="endTime"><?php the_field('endTime');?></td>
@@ -33,7 +28,19 @@ $curURL = (empty($_SERVER["HTTPS"]) ? "http://" : "https://") . $_SERVER["HTTP_H
 		<td class=""><?php the_field('todaysTask');?></td>
 		<td class=""><?php the_field('comment');?></td>
 		<td class=""><?php the_field('progress');?>%</td>
+		<td></td>
 		<td class=""><?php wp_bootstrap_starter_entry_footer(); ?></td>
+		</tr>
+		<tr>
+		<td>予測値</td>
+		<td>仮データ</td>
+		<td>仮データ</td>
+		<td>仮データ</td>
+		<td>仮データ</td>
+		<td>仮データ</td>
+		<td>仮データ</td>
+		<td>仮データ</td>
+		<td>仮データ</td>
 		</tr>
 		
 		<?php if ( 'post' === get_post_type() ) : ?>

@@ -391,7 +391,7 @@ function customize_post_admin_menu_labels() {
     }
     add_action( 'admin_menu', 'customize_post_admin_menu_labels' );
 
-function customize_admin_labels() {
+function admin_labels_override() {
     global $wp_post_types;
     $labels = &$wp_post_types['post']->labels;
     $labels->name = 'Daliy Report';
@@ -405,6 +405,6 @@ function customize_admin_labels() {
     $labels->not_found = 'Not found';
     $labels->not_found_in_trash = 'No Articles found in Trash';
     }
-    add_action( 'init', 'customize_admin_labels' );
+    add_action( 'init', 'admin_labels_override' );
 
     
