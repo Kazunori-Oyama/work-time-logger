@@ -1,6 +1,6 @@
 <section id="primary" class="content-area col-sm-12 col-md-12 col-lg-12">
 		<main id="main" class="site-main" role="main">
-		<form id="search" name="search" method="GET" action="/">
+		<form id="search" name="search" method="GET" action="/logger">
 			<table>
 				<tbody>
 					<tr>
@@ -86,10 +86,10 @@
 	  <select class="custom-select" id="inputGroupSelect03" name="author">
 				<option value="">Ignore</option>
 <?php
-$stuffs = get_users();
+$staffs = get_users();
 // WP_User オブジェクトの配列。
-foreach ( $stuffs as $stuff ) {
-	echo '<option value="'.esc_html( $stuff->ID ).'">' . esc_html( $stuff->display_name ) . '</oprion>';
+foreach ( $staffs as $staff ) {
+	echo '<option value="'.esc_html( $staff->ID ).'">' . esc_html( $staff->display_name ) . '</oprion>';
 }?></td>
 						<td><input class="btn btn-success mb-3" type="submit" value="Submit"></td>
 					</tr>

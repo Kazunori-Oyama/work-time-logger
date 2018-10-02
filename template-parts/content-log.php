@@ -21,7 +21,8 @@
 		</td>
 		<td class="startTime"><?php the_field('startTime');?></td>
 		<td class="endTime"><?php the_field('endTime');?></td>
-		<td><span class="workTime"><?php the_field('worktime');?></span>min</td>
+		<td>実働時間：<span class="workTime"><?php the_field('worktime');?></span>min
+		<br>予想時間：<?php the_field('preestimate');?>min</td>
 		<td class="in-charge"><a href="<?php echo home_url();?>/?post_type=logs&author=<?php echo the_author_meta('ID');?>"><?php echo $author_name;?></a></td>
 		<td class="project"><?php echo get_the_term_list($post->ID,'project');?></td>
 		<td class="step"><?php echo get_the_term_list($post->ID,'step');?></td>
@@ -32,15 +33,18 @@
 		<td class=""><?php wp_bootstrap_starter_entry_footer(); ?></td>
 		</tr>
 		<tr>
-		<td>予測値</td>
-		<td>仮データ</td>
-		<td>仮データ</td>
-		<td>仮データ</td>
-		<td>仮データ</td>
-		<td>仮データ</td>
-		<td>仮データ</td>
-		<td>仮データ</td>
-		<td>仮データ</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
 		</tr>
 		
 		<?php if ( 'post' === get_post_type() ) : ?>

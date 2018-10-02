@@ -8,11 +8,16 @@
  */
 
 get_header(); ?>
-
-	<section id="primary" class="container-fluid">
+<?php get_template_part( 'template-parts/searchfunction');?>
+	<section id="primary" class="col-sm-12 col-lg-8">
 	<?php
+
+					$curURL = (empty($_SERVER["HTTPS"]) ? "http://" : "https://") . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
+					$curURL = $curURL.'&post_type=log';
 					the_archive_title( '<h1 class="page-title">', '</h1>' );
-					the_field( 'estimate' );
+					echo '<p><a href="'.$curURL.'" style="display:inline; text-align:right;">この日のログを見る　</a></p>';
+					the_archive_description( '<h3 class="archive-description">', '</h3>' );
+
 				?>
 		<main id="main" class="site-main" role="main">
 			
@@ -29,7 +34,7 @@ get_header(); ?>
 				 * If you want to override this in a child theme, then include a file
 				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
 				 */
-				the_field('daily_report');
+				get_template_part( 'template-parts/content', get_post_format() );
 
 			endwhile;
 

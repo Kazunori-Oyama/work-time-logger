@@ -12,7 +12,7 @@ get_header(); ?>
 			<table class="table table-striped">
 			<tr><td colspan="3" class="font-weight-bold">作業時間合計</td><td id="totalTime"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 		<tr><td colspan="3" class="font-weight-bold">総コスト</td><td id="totalAmount"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><th>date</th><th>start</th><th>end</th><th>time</th><th>staff</th><th>project</th><th>category</th><th>Todays Task</th><th>comment</th><th>progress</th><th><i class="fas fa-search-plus"><a href="#" id="open"></a></i></th><th></th></tr>
+			<tr><th>date</th><th>start</th><th>end</th><th>time</th><th>staff</th><th>project</th><th>category</th><th>Todays Task</th><th>comment</th><th>progress</th><th></th><th></th></tr>
 		<?php
 		if ( have_posts() ) : ?>
 
