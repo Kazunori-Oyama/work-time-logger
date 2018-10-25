@@ -325,43 +325,30 @@ add_action('init','logPost');
 
 //Create daily report
 
-// function daily_report(){
-//     register_post_type('daily_report',
-//     array(
-//         'labels'=>array(
-//             'name'=>__('Daily Reports'),
-//             'singular_name'=>__('Daily Reports')
-//         ),
-//         'public'=>true,
-//         'has_archive'=>true,
-//         'show_ui' => true,
-//         'show_admin_column'=>true,
-//         'show_in_nav_menus' =>true,
-//         'query_var' => true,
-//         'supports' => array(
-//             'title',
-//             'author',
-//             'tabs'
-//         ),
-//     )
-//     );
+function estimate(){
+    register_post_type('estimate',
+    array(
+        'labels'=>array(
+            'name'=>__('Estimate'),
+            'singular_name'=>__('Estimate')
+        ),
+        'public'=>true,
+        'has_archive'=>true,
+        'show_ui' => true,
+        'show_admin_column'=>true,
+        'show_in_nav_menus' =>true,
+        'query_var' => true,
+        'supports' => array(
+            'title',
+            'author',
+            'tabs'
+        ),
+    )
+    );
 
-//     register_taxonomy('members','daily_report',
     
-//         array(
-//             'public'=> true,
-//             'hierarchical' => true,
-//             'labels' => array(
-//                 'name' => 'メンバー',
-//                 'singular_name' => 'メンバー', 
-//             ),
-//             'show_ui' => true,
-//             'show_admin_column'=>true,
-//             'show_in_nav_menus' =>true,
-//         )
-//             );
-// }
-// add_action('init','daily_report');
+}
+add_action('init','estimate');
 
 
 function author_article( $query ) {
@@ -407,4 +394,66 @@ function admin_labels_override() {
     }
     add_action( 'init', 'admin_labels_override' );
 
-    
+    function change_posts_per_page($query) {
+        /* 管理画面,メインクエリに干渉しないために必須 */
+       if ( is_admin() || ! $query->is_main_query() ){
+            return;
+        }
+       
+        if ( $query->is_year() ) {
+            $query->set( 'posts_per_page', '-1' );
+            return;
+        }
+
+        if ( $query->is_month() ) {
+            $query->set( 'posts_per_page', '-1' );
+            return;
+        }
+
+        if ( $query->is_date() ) {
+            $query->set( 'posts_per_page', '-1' );
+            return;
+        }
+
+        if ( $query->is_post_type_archive() ) {
+            $query->set( 'posts_per_page', '-1' );
+            return;
+        }
+
+        if ( $query->is_tax() ) {
+            $query->set( 'posts_per_page', '-1' );
+            return;
+        }
+       
+       }
+       add_action( 'pre_get_posts', 'change_posts_per_page' );
+
+// Create Custom Fields
+
+function my_acf_add_local_field_groups() {
+	
+	acf_add_local_field_group(array(
+		'key' => 'group_1',
+		'title' => 'My Group',
+		'fields' => array (
+			array (
+				'key' => 'field_1',
+				'label' => 'Sub Title',
+				'name' => 'sub_title',
+				'type' => 'text',
+			)
+		),
+		'location' => array (
+			array (
+				array (
+					'param' => 'estimate',
+					'operator' => '==',
+					'value' => 'post',
+				),
+			),
+		),
+	));
+	
+}
+
+add_action('acf/pre_save_post', 'my_acf_add_local_field_groups');

@@ -51,5 +51,12 @@
 
 
 </script>
+<script>
+jQuery(function($){
+	
+		$('#step').prepend('<option value="">Ignore</option>');
+	})
+
+</script>
 </body>
 </html>

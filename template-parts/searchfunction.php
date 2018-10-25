@@ -67,7 +67,8 @@
 	  <div class="input-group-prepend">
 <label class="input-group-text" for="inputGroupSelect03">Step</label>
   </div>
-	  <select class="custom-select" id="inputGroupSelect03" name="step">
+  <?php wp_dropdown_categories(array('taxonomy' => 'step','hide_empty' => 0, 'hierarchical' => 5, 'name'=> 'step','value_field' => 'slug','class'=>'custom-select')); ?>
+	  <!-- <select class="custom-select" id="inputGroupSelect03" name="step">
 				<option value="">Ignore</option>
 				<?php $terms = get_terms('step');
 				foreach ( $terms as $term ) {
@@ -76,7 +77,7 @@
 					echo '</option>';
 				};
 				?>
-	  </select>
+	  </select> -->
 </div></td>
 <td class="pl-2 pr-2">
 <div class="input-group mb-3">

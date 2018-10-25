@@ -11,7 +11,9 @@ get_header(); ?>
 	<?php get_template_part( 'template-parts/searchfunction');?>
 			<table class="table table-striped">
 			<tr><td colspan="3" class="font-weight-bold">作業時間合計</td><td id="totalTime"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-		<tr><td colspan="3" class="font-weight-bold">総コスト</td><td id="totalAmount"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+			<?php if(current_user_can('activate_plugins')):?>
+				<tr><td colspan="3" class="font-weight-bold">総コスト</td><td id="totalAmount"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+			<?php endif;?>
 			<tr><th>date</th><th>start</th><th>end</th><th>time</th><th>staff</th><th>project</th><th>category</th><th>Todays Task</th><th>comment</th><th>progress</th><th></th><th></th></tr>
 		<?php
 		if ( have_posts() ) : ?>
