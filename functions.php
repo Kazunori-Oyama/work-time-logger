@@ -218,7 +218,9 @@ function wp_bootstrap_starter_scripts() {
 	wp_enqueue_script('wp-bootstrap-starter-bootstrapjs', get_template_directory_uri() . '/inc/assets/js/bootstrap.min.js', array(), '', true );
     wp_enqueue_script('wp-bootstrap-starter-themejs', get_template_directory_uri() . '/inc/assets/js/theme-script.min.js', array(), '', true );
 	wp_enqueue_script( 'wp-bootstrap-starter-skip-link-focus-fix', get_template_directory_uri() . '/inc/assets/js/skip-link-focus-fix.min.js', array(), '20151215', true );
-
+    
+    //calc.js
+    wp_enqueue_script('calc-js',get_template_directory_uri().'/calc.js',array(),'',true);
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
@@ -276,8 +278,11 @@ if ( ! class_exists( 'wp_bootstrap_navwalker' )) {
 function logPost (){
     register_post_type('log',array(
         'labels'=>array(
-            'name'=>__('Log'),
-            'singular_name'=>__('Log'),
+            'name'=>__('ログ一覧'),
+            'singular_name'=>__('ログ'),
+            'name_admin_bar'=>__('新規ログの登録'),
+            'add_new'=>__('新規ログの登録'),
+            'edit_item'=>__('ログを編集'),
         ),
         'public'=>true,
         'has_archive'=>true,
@@ -286,6 +291,7 @@ function logPost (){
         'show_in_nav_menus' =>true,
         'query_var' => true,
         'supports' => array(
+            'title',
             'author',
             'tabs'
         ),
@@ -329,8 +335,11 @@ function estimate(){
     register_post_type('estimate',
     array(
         'labels'=>array(
-            'name'=>__('Estimate'),
-            'singular_name'=>__('Estimate')
+            'name'=>__('見積もり一覧'),
+            'singular_name'=>__('見積もり'),
+            'name_admin_bar'=>__('新規見積もり作成'),
+            'add_new'=>__('新規見積もり作成'),
+            'edit_item'=>__('見積もりを編集'),
         ),
         'public'=>true,
         'has_archive'=>true,
@@ -341,7 +350,8 @@ function estimate(){
         'supports' => array(
             'title',
             'author',
-            'tabs'
+            'tabs',
+            'editor'
         ),
     )
     );
@@ -350,7 +360,47 @@ function estimate(){
 }
 add_action('init','estimate');
 
+function management(){
+    register_post_type('management',
+    array(
+        'labels'=>array(
+            'name'=>__('進捗管理'),
+            'singular_name'=>__('進捗管理'),
+            // 'name_admin_bar'=>__('進捗管理'),
+            // 'add_new'=>__('新規見積もり作成'),
+            // 'edit_item'=>__('見積もりを編集'),
+        ),
+        'public'=>true,
+        'has_archive'=>true,
+        'show_ui' => true,
+        'show_admin_column'=>true,
+        'show_in_nav_menus' =>true,
+        'query_var' => true,
+        'supports' => array(
+            'title',
+            'author',
+            'tabs',
+            'editor'
+        ),
+    )
+    );
 
+    
+}
+add_action('init','management');
+function org_caution_title_bottom(){
+    global $post;
+    if($post->post_type == 'management'){
+        $termsLists = get_categories(array('taxonomy'=>'step','orderby'=>'term_order'));
+        foreach($termsLists as $term){
+            echo '<br>';
+            echo $term->name;
+        }
+        
+    }
+    	
+}
+add_action( 'edit_form_after_title', org_caution_title_bottom );
 function author_article( $query ) {
     if ( is_author() ) {
     $query->set( 'post_type', 'log' );
@@ -428,32 +478,11 @@ function admin_labels_override() {
        }
        add_action( 'pre_get_posts', 'change_posts_per_page' );
 
-// Create Custom Fields
 
-function my_acf_add_local_field_groups() {
-	
-	acf_add_local_field_group(array(
-		'key' => 'group_1',
-		'title' => 'My Group',
-		'fields' => array (
-			array (
-				'key' => 'field_1',
-				'label' => 'Sub Title',
-				'name' => 'sub_title',
-				'type' => 'text',
-			)
-		),
-		'location' => array (
-			array (
-				array (
-					'param' => 'estimate',
-					'operator' => '==',
-					'value' => 'post',
-				),
-			),
-		),
-	));
-	
+
+//add own js files on admin page
+function admin_script(){
+    wp_enqueue_script( 'my_admin_script', get_template_directory_uri().'/calc.js', array('jquery'));
+
 }
-
-add_action('acf/pre_save_post', 'my_acf_add_local_field_groups');
+add_action('admin_enqueue_scripts','admin_script');
